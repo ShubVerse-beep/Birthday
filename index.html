@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,16 @@
     <meta name="github" content="https://github.com/Aoudumber-Bade">
     <title>HBD 2.0 | Aoudumber Bade</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
+
 <body>
-    <embed src="./images/Sahiba.mp3" autostart="true" loop="true" width="0" height="0">
+
+    <audio id="bg-music" src="./images/Sahiba.mp3" loop muted></audio>
     <div id="wrapper">
         <div class="flag__birthday">
             <img src="./images/1.png" alt="" width="350" class="flag__left">
@@ -111,7 +117,7 @@
             <img src="./images/smiley_icon.png" alt="" width="100">
         </div>
 
-        
+
 
         <div class="box__letter">
             <div class="letter__border">
@@ -120,7 +126,8 @@
                     </div>
                     <div class="content__letter">
                         <div class="left">
-                            <img id="heart__letter" src="https://media.giphy.com/media/YKUvclrGYmDKXwtphf/giphy.gif" alt="">
+                            <img id="heart__letter" src="https://media.giphy.com/media/YKUvclrGYmDKXwtphf/giphy.gif"
+                                alt="">
                             <img class="heart heart_1" style="--t: 0.2s" width="20" src="./images/heart.png" alt="">
                             <img class="heart heart_2" style="--t: 0.4s" width="20" src="./images/heart.png" alt="">
                             <img class="heart heart_3" style="--t: 0.6s" width="20" src="./images/heart.png" alt="">
@@ -128,10 +135,11 @@
                         </div>
                         <div class="right">
                             <div class="love__img">
-                                <img src="https://media.giphy.com/media/m85llaN7ZkFIHtURiC/giphy.gif" alt="" width="220">
+                                <img src="https://media.giphy.com/media/m85llaN7ZkFIHtURiC/giphy.gif" alt=""
+                                    width="220">
                             </div>
                             <div class="text__letter">
-                                 <p></p>
+                                <p></p>
                             </div>
                             <img id="mewmew" width="80" src="./images/mewmew.gif" alt="">
                         </div>
@@ -145,11 +153,21 @@
     </div>
 
     <div id="copy">
-		<p class="text-center text-white text-sm">FROM YOUR : <a
-			href="https://www.instagram.com/aoudumber.dev/reels/#">SHUBDI</a></p>
-	  </div>
+        <p class="text-center text-white text-sm">FROM YOUR : <a
+                href="https://www.instagram.com/aoudumber.dev/reels/#">SHUBDI</a></p>
+    </div>
+
 </body>
 <script>
+    window.addEventListener('click', () => {
+        const audio = document.getElementById('bg-music');
+        if (audio && audio.paused) {
+            audio.muted = false;   // unmute before play
+            audio.play().catch(err => {
+                console.log("Playback failed:", err);
+            });
+        }
+    }, { once: true });
     let datetxt = "16 August 2005";
     let datatxtletter = "To my cutest best friend and the best bench partner ever 🪑💖. You make every single day in class so much more fun and memorable. I’m so lucky to have you by my side — sharing laughs, secrets, and all those little moments that mean the most. On your special day, I wish you endless happiness, good health, and all the success you deserve. Happy Birthday to you! 💕🥳🎂🎉";
     let titleLetter = "To you";
@@ -161,66 +179,66 @@
     let currentIndexTitle = 0;
     let date__of__birth = document.querySelector(".date__of__birth span");
     let text__letter = document.querySelector(".text__letter p");
-    setTimeout(function(){
-        timeDatetxt = setInterval(function(){
-            if(currentIndex < charArrDate.length){
+    setTimeout(function () {
+        timeDatetxt = setInterval(function () {
+            if (currentIndex < charArrDate.length) {
                 date__of__birth.textContent += charArrDate[currentIndex];
                 currentIndex++;
             }
-            else{
+            else {
                 let i = document.createElement("i");
                 i.className = "fa-solid fa-star"
                 document.querySelector(".date__of__birth").prepend(i)
                 document.querySelector(".date__of__birth").appendChild(i.cloneNode(true))
                 clearInterval(timeDatetxt)
             }
-        },100)
-    },12000)
+        }, 100)
+    }, 12000)
 
     var intervalContent;
     var intervalTitle;
-    $("#btn__letter").on("click", function(){
+    $("#btn__letter").on("click", function () {
         $(".box__letter").slideDown()
-        setTimeout(function(){
+        setTimeout(function () {
             $(".letter__border").slideDown();
-        },1000)
-        setTimeout(function(){
-            intervalTitle = setInterval(function(){
-                if(currentIndexTitle < charArrTitle.length){
+        }, 1000)
+        setTimeout(function () {
+            intervalTitle = setInterval(function () {
+                if (currentIndexTitle < charArrTitle.length) {
                     document.querySelector(".title__letter").textContent += charArrTitle[currentIndexTitle];
                     let i = document.createElement("i");
                     i.className = "fa-solid fa-heart"
                     document.querySelector(".title__letter").appendChild(i)
                     currentIndexTitle++;
                 }
-                else{
+                else {
                     clearInterval(intervalTitle)
                 }
-            },100)
-        },2000)
-        setTimeout(function(){
+            }, 100)
+        }, 2000)
+        setTimeout(function () {
             document.querySelector("#heart__letter").classList.add("animationOp");
             document.querySelector(".love__img").classList.add("animationOp");
             document.querySelector("#mewmew").classList.add("animationOp");
-        },2800)
-        setTimeout(function(){
-            document.querySelectorAll(".heart").forEach((item)=>{
+        }, 2800)
+        setTimeout(function () {
+            document.querySelectorAll(".heart").forEach((item) => {
                 item.classList.add("animation")
             })
-        },3500)
-        setTimeout(function(){
-            intervalContent = setInterval(function(){
-                if(currentIndexLetter < charArrDateLetter.length){
+        }, 3500)
+        setTimeout(function () {
+            intervalContent = setInterval(function () {
+                if (currentIndexLetter < charArrDateLetter.length) {
                     text__letter.textContent += charArrDateLetter[currentIndexLetter];
                     currentIndexLetter++;
                 }
-                else{
+                else {
                     clearInterval(intervalContent)
                 }
-            },50)
-        },6000)
+            }, 50)
+        }, 6000)
     })
-    $(".close").on("click", function(){
+    $(".close").on("click", function () {
         clearInterval(intervalContent)
         document.querySelector(".title__letter").textContent = "";
         text__letter.textContent = "";
@@ -229,11 +247,12 @@
         document.querySelector("#heart__letter").classList.remove("animationOp");
         document.querySelector(".love__img").classList.remove("animationOp");
         document.querySelector("#mewmew").classList.remove("animationOp");
-        document.querySelectorAll(".heart").forEach((item)=>{
-                item.classList.remove("animation")
-            })
+        document.querySelectorAll(".heart").forEach((item) => {
+            item.classList.remove("animation")
+        })
         $(".box__letter").slideUp();
         $(".letter__border").slideUp();
     })
 </script>
+
 </html>
